@@ -63,8 +63,8 @@ public class GreetingController
         List<ATM> atmList = atmRepository.findAll();
         Set<Branch> ownerBranch = atmList.stream().map(ATM::getOwnerBranch).map(t -> {
             t.setBranchType(null);
-            t.setRegion(null);
-            t.setBranchPeopleData(null);
+//            t.setRegion(null);
+//            t.setBranchPeopleData(null);
             return t;
         }).collect(Collectors.toSet());
         return new ResponseEntity<>(ownerBranch, HttpStatus.OK);
@@ -78,10 +78,22 @@ public class GreetingController
         System.out.println(branchId);
 
         ATM atm1 = new ATM();
-        atm1.setAtmId("id1");
+        atm1.setAtmId("100002322320L");
+        atm1.setSiteType("Offsite");
+        atm1.setOwnershipType("Opex-TOM");
+        atm1.setNetworkType("SBI-CONNECT");
+        atm1.setOem("Hyosung");
+        atm1.setModel("NCR22E");
+        atm1.setMsVendor("Hitachi");
 
         ATM atm2 = new ATM();
-        atm2.setAtmId("id2");
+        atm2.setAtmId("200002322320L");
+        atm2.setSiteType("Onsite");
+        atm2.setOwnershipType("Capex");
+        atm2.setNetworkType("SBI-CONNECT");
+        atm2.setOem("Hyosung");
+        atm2.setModel("NCR");
+        atm2.setMsVendor("Hitachi");
 
         List<ATM> atmList = new ArrayList<>();
         atmList.add(atm1);
@@ -132,13 +144,13 @@ public class GreetingController
 
         ATM atmOut = atmRepository.getOne(atmIn.getAtmId());
         Branch br = atmOut.getCashLinkBranch();
-        Pfhrms brmgr = br.getBranchPeopleData().getBranchManager();
-        Pfhrms atmofr = br.getBranchPeopleData().getAtmOfficer();
+//        Pfhrms brmgr = br.getBranchPeopleData().getBranchManager();
+//        Pfhrms atmofr = br.getBranchPeopleData().getAtmOfficer();
 
         model.addAttribute("br", br);
         model.addAttribute("atmIn", atmOut);
-        model.addAttribute("brmgr", brmgr);
-        model.addAttribute("atmofr", atmofr);
+//        model.addAttribute("brmgr", brmgr);
+//        model.addAttribute("atmofr", atmofr);
         model.addAttribute("currTab", "STEP3");
         return "step3";
     }

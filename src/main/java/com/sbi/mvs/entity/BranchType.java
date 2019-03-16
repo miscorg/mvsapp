@@ -11,8 +11,8 @@ public class BranchType implements Serializable {
     private String branchType;
     private String typeName;
 
-    @OneToMany( mappedBy = "branchType")
-    private Set<Branch> branches;
+//    @OneToMany( fetch = FetchType.EAGER, mappedBy = "branchType")
+//    private Set<Branch> branches;
 
     public String getBranchType() {
         return branchType;
@@ -30,11 +30,11 @@ public class BranchType implements Serializable {
         this.typeName = typeName;
     }
 
-    public Set<Branch> getBranches() {
-        return branches;
-    }
-
-    public void setBranches(Set<Branch> branches) {
-        this.branches = branches;
-    }
+//    public Set<Branch> getBranches() {
+//        return branches;
+//    }
+//
+//    public void setBranches(Set<Branch> branches) {
+//        this.branches = branches;
+//    }
 }

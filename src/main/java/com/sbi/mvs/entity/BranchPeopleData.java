@@ -1,5 +1,7 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -17,8 +19,9 @@ public class BranchPeopleData implements Serializable {
     @JoinColumn(name = "atmOfficerId")
     private Pfhrms atmOfficer;
 
+    @JsonIgnore
     @MapsId
-    @OneToOne(mappedBy = "branchPeopleData")
+    @OneToOne
     @JoinColumn(name = "branchId")
     private Branch branch;
 

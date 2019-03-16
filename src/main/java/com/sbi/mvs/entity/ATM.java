@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class ATM implements Serializable {
 
     @Id
@@ -22,12 +22,12 @@ public class ATM implements Serializable {
     private String msVendor;
     private String cashRepl;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ownerBranch")
     private Branch ownerBranch;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cashLinkBranch")
     private Branch cashLinkBranch;

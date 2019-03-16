@@ -10,5 +10,6 @@ public interface BranchService {
     Set<Branch> getCashLinkBranch();
     Set<Branch> getOwnerBranch();
     Pfhrms getBankUserDetails(String branchId, String role);
+    Branch fetchBranch(String branchId);
 
 }

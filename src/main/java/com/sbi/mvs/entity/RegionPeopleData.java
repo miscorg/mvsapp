@@ -19,7 +19,7 @@ public class RegionPeopleData implements Serializable {
 
     @MapsId
     @OneToOne(mappedBy = "regionPeopleData")
-    @JoinColumn(name = "regionId")
+//    @JoinColumn(name = "regionId")
     private Region region;
 
     public String getRegionId() {

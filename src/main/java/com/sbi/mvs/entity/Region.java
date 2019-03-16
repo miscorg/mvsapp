@@ -15,8 +15,8 @@ public class Region implements Serializable {
     @JoinColumn(name = "moduleId")
     private Module module;
 
-    @OneToMany(mappedBy = "region")
-    private Set<Branch> branches;
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "region")
+//    private Set<Branch> branches;
 
     @OneToOne
     @PrimaryKeyJoinColumn
@@ -46,13 +46,13 @@ public class Region implements Serializable {
         this.module = module;
     }
 
-    public Set<Branch> getBranches() {
-        return branches;
-    }
-
-    public void setBranches(Set<Branch> branches) {
-        this.branches = branches;
-    }
+//    public Set<Branch> getBranches() {
+//        return branches;
+//    }
+//
+//    public void setBranches(Set<Branch> branches) {
+//        this.branches = branches;
+//    }
 
     public RegionPeopleData getRegionPeopleData() {
         return regionPeopleData;
