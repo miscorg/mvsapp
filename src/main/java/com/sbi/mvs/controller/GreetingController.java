@@ -58,11 +58,16 @@ public class GreetingController
     }
 
     @GetMapping("/ownerbranchList")
-    public ResponseEntity<Set<Branch>> fetchOwnerbranchList()
+    public ResponseEntity<?> fetchOwnerbranchList()
     {
         List<ATM> atmList = atmRepository.findAll();
-        Set<Branch> ownerBranch = atmList.stream().map(ATM::getOwnerBranch).collect(Collectors.toSet());
-        return new ResponseEntity<Set<Branch>>(ownerBranch, HttpStatus.OK);
+        Set<Branch> ownerBranch = atmList.stream().map(ATM::getOwnerBranch).map(t -> {
+            t.setBranchType(null);
+            t.setRegion(null);
+            t.setBranchPeopleData(null);
+            return t;
+        }).collect(Collectors.toSet());
+        return new ResponseEntity<>(ownerBranch, HttpStatus.OK);
     }
 
     @GetMapping("/atmList/{branchType}/{branchId}")
