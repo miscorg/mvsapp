@@ -19,12 +19,7 @@ public class BranchServiceImpl implements BranchService {
     @Override
     public Set<Branch> getCashLinkBranch() {
         List<ATM> atmList = atmRepository.findAll();
-        Set<Branch> cashLinkBranch = atmList.stream().map(ATM::getCashLinkBranch).map(t -> {
-            t.setBranchType(null);
-            t.setRegion(null);
-            t.setBranchPeopleData(null);
-            return t;
-        }).collect(Collectors.toSet());
+        Set<Branch> cashLinkBranch = atmList.stream().map(ATM::getCashLinkBranch).collect(Collectors.toSet());
         return cashLinkBranch;
     }
 

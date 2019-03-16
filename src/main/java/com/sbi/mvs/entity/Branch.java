@@ -1,9 +1,13 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Branch implements Serializable {
 
     @Id
@@ -18,14 +22,17 @@ public class Branch implements Serializable {
     private Long stateCode;
     private String branchEmailId;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "branchType")
     private BranchType branchType;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "regionId")
     private Region region;
 
+    @JsonIgnore
     @OneToOne
     @PrimaryKeyJoinColumn
     private BranchPeopleData branchPeopleData;

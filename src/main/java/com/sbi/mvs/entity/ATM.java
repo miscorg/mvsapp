@@ -1,9 +1,13 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ATM implements Serializable {
 
     @Id
@@ -18,10 +22,12 @@ public class ATM implements Serializable {
     private String msVendor;
     private String cashRepl;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "ownerBranch")
     private Branch ownerBranch;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cashLinkBranch")
     private Branch cashLinkBranch;
