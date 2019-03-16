@@ -8,17 +8,17 @@ import java.util.Set;
 public class BranchType implements Serializable {
 
     @Id
-    private Long branchType;
+    private String branchType;
     private String typeName;
 
     @OneToMany( mappedBy = "branchType")
     private Set<Branch> branches;
 
-    public Long getBranchType() {
+    public String getBranchType() {
         return branchType;
     }
 
-    public void setBranchType(Long branchType) {
+    public void setBranchType(String branchType) {
         this.branchType = branchType;
     }
 

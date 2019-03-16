@@ -8,7 +8,7 @@ import java.util.Set;
 public class Region implements Serializable {
 
     @Id
-    private Long regionId;
+    private String regionId;
     private String regionName;
 
     @ManyToOne
@@ -22,11 +22,11 @@ public class Region implements Serializable {
     @PrimaryKeyJoinColumn
     private RegionPeopleData regionPeopleData;
 
-    public Long getRegionId() {
+    public String getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(Long regionId) {
+    public void setRegionId(String regionId) {
         this.regionId = regionId;
     }
 

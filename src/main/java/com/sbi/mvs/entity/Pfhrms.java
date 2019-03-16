@@ -10,17 +10,17 @@ import java.io.Serializable;
 public class Pfhrms implements Serializable {
 
     @Id
-    private Long pfId;
+    private String pfId;
     private String name;
     private String mobileNumber;
     private String emailIdOfficial;
     private String emailIdDesignated;
 
-    public Long getPfId() {
+    public String getPfId() {
         return pfId;
     }
 
-    public void setPfId(Long pfId) {
+    public void setPfId(String pfId) {
         this.pfId = pfId;
     }
 

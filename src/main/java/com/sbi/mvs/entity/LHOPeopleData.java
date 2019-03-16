@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class LHOPeopleData implements Serializable {
 
     @Id
-    private Long networkId;
+    private String networkId;
 
     @OneToOne
     @JoinColumn(name = "agmatmPFId")
@@ -18,11 +18,11 @@ public class LHOPeopleData implements Serializable {
     @JoinColumn(name = "networkId")
     private Network network;
 
-    public Long getNetworkId() {
+    public String getNetworkId() {
         return networkId;
     }
 
-    public void setNetworkId(Long networkId) {
+    public void setNetworkId(String networkId) {
         this.networkId = networkId;
     }
 

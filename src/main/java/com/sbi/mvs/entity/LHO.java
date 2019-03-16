@@ -11,17 +11,17 @@ import java.util.Set;
 public class LHO implements Serializable {
 
     @Id
-    private Long lhoId;
+    private String lhoId;
     private String lhoName;
 
     @OneToMany( mappedBy = "lho")
     private Set<Network> networks;
 
-    public Long getLhoId() {
+    public String getLhoId() {
         return lhoId;
     }
 
-    public void setLhoId(Long lhoId) {
+    public void setLhoId(String lhoId) {
         this.lhoId = lhoId;
     }
 

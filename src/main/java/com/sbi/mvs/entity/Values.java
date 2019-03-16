@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Values implements Serializable {
 
     @Id
-    private String id;
+    private Long id;
     private String key;
     private String value;
 }

@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class Branch implements Serializable {
 
     @Id
-    private Long branchId;
+    private String branchId;
     private String branchName;
     private String branchAddress1;
     private String branchAddress2;
@@ -37,11 +37,11 @@ public class Branch implements Serializable {
     @PrimaryKeyJoinColumn
     private BranchPeopleData branchPeopleData;
 
-    public Long getBranchId() {
+    public String getBranchId() {
         return branchId;
     }
 
-    public void setBranchId(Long branchId) {
+    public void setBranchId(String branchId) {
         this.branchId = branchId;
     }
 

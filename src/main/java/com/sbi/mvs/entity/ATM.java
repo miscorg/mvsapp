@@ -43,10 +43,12 @@ public class ATM implements Serializable {
     private String popGroup;
     private String landmark;
 
+    @JsonIgnore
     @OneToOne
     @PrimaryKeyJoinColumn
     private ATMNetwork atmNetwork;
 
+    @JsonIgnore
     @OneToOne
     @PrimaryKeyJoinColumn
     private ATMAuxInfo atmAuxInfo;

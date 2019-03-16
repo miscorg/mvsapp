@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class BranchPeopleData implements Serializable {
 
     @Id
-    private Long branchId;
+    private String branchId;
 
     @OneToOne
     @JoinColumn(name = "branchManagerId")
@@ -22,11 +22,11 @@ public class BranchPeopleData implements Serializable {
     @JoinColumn(name = "branchId")
     private Branch branch;
 
-    public Long getBranchId() {
+    public String getBranchId() {
         return branchId;
     }
 
-    public void setBranchId(Long branchId) {
+    public void setBranchId(String branchId) {
         this.branchId = branchId;
     }
 

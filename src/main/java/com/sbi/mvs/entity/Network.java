@@ -8,7 +8,7 @@ import java.util.Set;
 public class Network implements Serializable {
 
     @Id
-    private Long networkId;
+    private String networkId;
     private String networkName;
 
     @ManyToOne
@@ -22,11 +22,11 @@ public class Network implements Serializable {
     @PrimaryKeyJoinColumn
     private LHOPeopleData lhoPeopleData;
 
-    public Long getNetworkId() {
+    public String getNetworkId() {
         return networkId;
     }
 
-    public void setNetworkId(Long networkId) {
+    public void setNetworkId(String networkId) {
         this.networkId = networkId;
     }
 

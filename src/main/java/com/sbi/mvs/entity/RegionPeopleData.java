@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class RegionPeopleData implements Serializable {
 
     @Id
-    private Long regionId;
+    private String regionId;
 
     @OneToOne
     @JoinColumn(name = "chanelManagerPFId")
@@ -22,11 +22,11 @@ public class RegionPeopleData implements Serializable {
     @JoinColumn(name = "regionId")
     private Region region;
 
-    public Long getRegionId() {
+    public String getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(Long regionId) {
+    public void setRegionId(String regionId) {
         this.regionId = regionId;
     }
 

@@ -4,10 +4,7 @@ import com.sbi.mvs.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
@@ -25,5 +22,10 @@ public class BranchController {
     @GetMapping("/cashlink")
     public ResponseEntity<?> fetchCashLinkBranchList(){
         return new ResponseEntity<>(branchService.getCashLinkBranch(), HttpStatus.OK);
+    }
+
+    @GetMapping("{branchId}/{role}")
+    public ResponseEntity<?> getBranchUserDetails(@PathVariable String branchId,@PathVariable String role){
+        return new ResponseEntity<>(branchService.getBankUserDetails(branchId, role), HttpStatus.OK);
     }
 }

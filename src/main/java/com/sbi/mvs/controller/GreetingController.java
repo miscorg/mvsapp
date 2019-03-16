@@ -45,12 +45,12 @@ public class GreetingController
 //        return cashLinkBranch;
 
         Branch branch1 = new Branch();
-        branch1.setBranchId(1001L);
+        branch1.setBranchId("1001L");
         branch1.setBranchName("Branch 1");
         branches.add(branch1);
 
         Branch branch2 = new Branch();
-        branch2.setBranchId(1002L);
+        branch2.setBranchId("1002");
         branch2.setBranchName("Branch 2");
         branches.add(branch2);
 
@@ -161,7 +161,7 @@ public class GreetingController
 
 
 //    @GetMapping("/atmList/{branchType}/{branchId}")
-    public String states(Model model, @PathVariable("branchType") String branchType, @PathVariable("branchId") Long branchId)
+    public String states(Model model, @PathVariable("branchType") String branchType, @PathVariable("branchId") String branchId)
     {
         System.out.println(branchType);
         System.out.println(branchId);

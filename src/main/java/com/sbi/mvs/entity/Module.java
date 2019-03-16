@@ -8,7 +8,7 @@ import java.util.Set;
 public class Module implements Serializable {
 
     @Id
-    private Long moduleId;
+    private String moduleId;
     private String moduleName;
 
     @ManyToOne
@@ -18,11 +18,11 @@ public class Module implements Serializable {
     @OneToMany(mappedBy = "module")
     private Set<Region> regions;
 
-    public Long getModuleId() {
+    public String getModuleId() {
         return moduleId;
     }
 
-    public void setModuleId(Long moduleId) {
+    public void setModuleId(String moduleId) {
         this.moduleId = moduleId;
     }
 

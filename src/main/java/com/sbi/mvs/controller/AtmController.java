@@ -1,5 +1,6 @@
 package com.sbi.mvs.controller;
 
+import com.sbi.mvs.entity.ATM;
 import com.sbi.mvs.service.AtmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,18 @@ public class AtmController {
 
     @GetMapping("{atmId}")
     public ResponseEntity<?> getAtmDetailsById(@PathVariable String atmId){
-        return new ResponseEntity<>(atmService.getAtmById(atmId), HttpStatus.OK);
+        ATM atm = atmService.getAtmById(atmId);
+        return new ResponseEntity<>(atm, HttpStatus.OK);
     }
+
+    @GetMapping("{atmId}/auxinfo")
+    public ResponseEntity<?> getAtmAuxInfo(@PathVariable String atmId){
+        return new ResponseEntity<>(atmService.getAtmById(atmId).getAtmAuxInfo(), HttpStatus.OK);
+    }
+
+    @GetMapping("{atmId}/networkinfo")
+    public ResponseEntity<?> getAtmNetworkInfo(@PathVariable String atmId){
+        return new ResponseEntity<>(atmService.getAtmById(atmId).getAtmNetwork(), HttpStatus.OK);
+    }
+
 }
