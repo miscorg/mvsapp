@@ -12,7 +12,7 @@ public class ATMAuxInfo implements Serializable {
     private String atmId;
     private LocalDate targetDate;
     private Boolean tmkAvailable;
-    private Boolean tmkChecksum;
+    private String tmkChecksum;
     private Boolean auxField1;
     private Boolean auxField2;
     private Boolean auxField3;
@@ -53,11 +53,11 @@ public class ATMAuxInfo implements Serializable {
         this.tmkAvailable = tmkAvailable;
     }
 
-    public Boolean getTmkChecksum() {
+    public String getTmkChecksum() {
         return tmkChecksum;
     }
 
-    public void setTmkChecksum(Boolean tmkChecksum) {
+    public void setTmkChecksum(String tmkChecksum) {
         this.tmkChecksum = tmkChecksum;
     }
 
