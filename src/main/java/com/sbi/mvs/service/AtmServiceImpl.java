@@ -2,8 +2,10 @@ package com.sbi.mvs.service;
 
 import com.sbi.mvs.entity.ATM;
 import com.sbi.mvs.entity.Branch;
+import com.sbi.mvs.entity.Values;
 import com.sbi.mvs.repository.AtmRepository;
 import com.sbi.mvs.repository.BranchRepository;
+import com.sbi.mvs.repository.ValuesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class AtmServiceImpl implements AtmService{
@@ -20,6 +23,9 @@ public class AtmServiceImpl implements AtmService{
 
     @Autowired
     BranchRepository branchRepository;
+
+    @Autowired
+    ValuesRepository valuesRepository;
 
     @Override
     public List<String> getFieldValueByName(String field) {
@@ -33,7 +39,20 @@ public class AtmServiceImpl implements AtmService{
         fieldMap.put("msVender", Arrays.asList("FSS", "Hitachi", "NCR", "CMS"));
         fieldMap.put("cashRepType", Arrays.asList("Branch", "CMS", "NCR", "Hitachi"));
         fieldMap.put("phases", Arrays.asList("Phase X", "Phase XI", "Phase XII", "Phase XIII", "Prior to Phase X"));
-        return fieldMap.get(field);
+
+        List<Values> fieldValueList = valuesRepository.findByKey(field);
+        List<String> values = fieldValueList.stream().map(Values::getValue).collect(Collectors.toList());
+        return values;
+    }
+
+    @Override
+    public List<Values> getFieldValueCombination(String field) {
+        return valuesRepository.findByKey(field);
+    }
+
+    @Override
+    public List<Values> getFieldValueCombination(String field, Long parent) {
+        return valuesRepository.findByKeyAndParentId(field, parent);
     }
 
     @Override
@@ -57,5 +76,11 @@ public class AtmServiceImpl implements AtmService{
     @Override
     public ATM getAtmById(String atmId) {
         return atmRepository.findById(atmId).get();
+    }
+
+    @Override
+    public ATM updateAtmById(String atmId, ATM atm) {
+        atm.setAtmId(atmId);
+        return atmRepository.save(atm);
     }
 }

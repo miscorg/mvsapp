@@ -23,6 +23,16 @@ public class AtmController {
         return new ResponseEntity<>(atmService.getFieldValueByName(fieldName), HttpStatus.OK);
     }
 
+    @GetMapping("/field/{fieldName}/{parent}")
+    public ResponseEntity<?> getAllAtmFieldValuesById(@PathVariable String fieldName, @PathVariable Long parent){
+        return new ResponseEntity<>(atmService.getFieldValueCombination(fieldName,parent), HttpStatus.OK);
+    }
+
+    @PutMapping("{atmId}")
+    private ResponseEntity<?> updateAtmInfo(@PathVariable String atmId, @RequestBody ATM atm){
+        return new ResponseEntity<>(atmService.updateAtmById(atmId, atm),HttpStatus.OK);
+    }
+
 
     @GetMapping("/atmList/{branchType}/{branchId}")
     public ResponseEntity<List<ATM>> fetchAtmList(@PathVariable String branchType,
