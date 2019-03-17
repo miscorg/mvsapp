@@ -21,6 +21,7 @@ public class ATM implements Serializable {
     private String phase;
     private String msVendor;
     private String cashRepl;
+    private boolean status;
 
 //    @JsonIgnore
     @ManyToOne
@@ -274,6 +275,14 @@ public class ATM implements Serializable {
         sb.append(", atmAuxInfo=").append(atmAuxInfo);
         sb.append('}');
         return sb.toString();
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
 

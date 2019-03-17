@@ -36,4 +36,6 @@ public class AtmController {
         return new ResponseEntity<>(atmService.getAtmById(atmId).getAtmNetwork(), HttpStatus.OK);
     }
 
+
+
 }
