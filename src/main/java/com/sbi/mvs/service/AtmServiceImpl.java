@@ -58,4 +58,9 @@ public class AtmServiceImpl implements AtmService{
     public ATM getAtmById(String atmId) {
         return atmRepository.findById(atmId).get();
     }
+
+    @Override
+    public void save(ATM atmData) {
+        this.atmRepository.save(atmData);
+    }
 }

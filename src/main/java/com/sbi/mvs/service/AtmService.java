@@ -11,4 +11,6 @@ public interface AtmService {
     List<String> getFieldValueByName(String field);
     List<ATM> fetchAtmList(String branchId, String branchType);
     ATM getAtmById(String atmId);
+
+    void save(ATM atmData);
 }

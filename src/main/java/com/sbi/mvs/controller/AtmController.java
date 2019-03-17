@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -48,4 +50,20 @@ public class AtmController {
         return new ResponseEntity<>(atmService.getAtmById(atmId).getAtmNetwork(), HttpStatus.OK);
     }
 
+    @PostMapping("/save")
+    public ResponseEntity<Map<String, String>> saveAtmData(ATM atmData)
+    {
+        try {
+            this.atmService.save(atmData);
+            HashMap<String, String> resMap = new HashMap<>();
+            resMap.put("msg", "ATM Info Saved");
+            return ResponseEntity.ok(resMap);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
 }
