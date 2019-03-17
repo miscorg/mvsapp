@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("atm")
@@ -20,7 +23,16 @@ public class AtmController {
         return new ResponseEntity<>(atmService.getFieldValueByName(fieldName), HttpStatus.OK);
     }
 
-    @GetMapping("{atmId}")
+
+    @GetMapping("/atmList/{branchType}/{branchId}")
+    public ResponseEntity<List<ATM>> fetchAtmList(@PathVariable String branchType,
+                                                  @PathVariable String branchId)
+    {
+        List<ATM> atmList = this.atmService.fetchAtmList(branchId, branchType);
+        return ResponseEntity.ok(atmList);
+    }
+
+    @GetMapping("/{atmId}")
     public ResponseEntity<?> getAtmDetailsById(@PathVariable String atmId){
         ATM atm = atmService.getAtmById(atmId);
         return new ResponseEntity<>(atm, HttpStatus.OK);

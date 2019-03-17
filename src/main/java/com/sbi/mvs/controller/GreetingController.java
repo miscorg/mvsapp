@@ -181,9 +181,9 @@ public class GreetingController
         Optional<Branch> branch = branchRepository.findById(branchId);
         if(branch.isPresent()) {
             if ("owner".equals(branchType)) {
-                atmList = atmRepository.findByOwnerBranch(branch.get());
+//                atmList = atmRepository.findByOwnerBranch(branch.get());
             } else {
-                atmList = atmRepository.findByCashLinkBranch(branch.get());
+//                atmList = atmRepository.findByCashLinkBranch(branch.get());
             }
         }
 
