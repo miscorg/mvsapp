@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface PfhrmsRepository extends JpaRepository<Pfhrms,String> {
 
-    List<Pfhrms> findAllByPfIdLike(String userId);
+    List<Pfhrms> findAllByPfIdStartingWith(String userId);
 }

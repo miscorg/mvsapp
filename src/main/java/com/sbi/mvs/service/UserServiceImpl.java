@@ -22,6 +22,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Pfhrms> getUsersByPart(String userId) {
-        return pfhrmsRepository.findAllByPfIdLike(userId + "%");
+        return pfhrmsRepository.findAllByPfIdStartingWith(userId);
     }
 }

@@ -22,7 +22,7 @@ public class PfhrmsRepositoryTest {
 
     @Test
     public void findAllByIdLike() {
-        List<Pfhrms> usrs = pfhrmsRepository.findAllByPfIdLike("1%");
+        List<Pfhrms> usrs = pfhrmsRepository.findAllByPfIdStartingWith("1");
 //        List<Pfhrms> usrs = pfhrmsRepository.findAll();
         System.out.println(usrs);
     }
