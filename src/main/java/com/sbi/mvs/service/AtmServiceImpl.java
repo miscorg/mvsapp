@@ -1,7 +1,9 @@
 package com.sbi.mvs.service;
 
 import com.sbi.mvs.entity.ATM;
+import com.sbi.mvs.entity.Branch;
 import com.sbi.mvs.repository.AtmRepository;
+import com.sbi.mvs.repository.BranchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,9 @@ public class AtmServiceImpl implements AtmService{
     @Autowired
     AtmRepository atmRepository;
 
+    @Autowired
+    BranchRepository branchRepository;
+
     @Override
     public List<String> getFieldValueByName(String field) {
 
@@ -29,6 +34,24 @@ public class AtmServiceImpl implements AtmService{
         fieldMap.put("cashRepType", Arrays.asList("Branch", "CMS", "NCR", "Hitachi"));
         fieldMap.put("phases", Arrays.asList("Phase X", "Phase XI", "Phase XII", "Phase XIII", "Prior to Phase X"));
         return fieldMap.get(field);
+    }
+
+    @Override
+    public List<ATM> fetchAtmList(String branchId, String branchType)
+    {
+        System.out.println(branchId);
+        System.out.println(branchType);
+
+        if(branchType.equals("cashLink"))
+        {
+            Branch branch = this.branchRepository.findById(branchId).orElse(null);
+            return this.atmRepository.findAllByCashLinkBranch(branch);
+        }
+        else
+        {
+            Branch branch = this.branchRepository.findById(branchId).orElse(null);
+            return this.atmRepository.findAllByOwnerBranch(branch);
+        }
     }
 
     @Override

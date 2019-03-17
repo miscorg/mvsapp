@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface AtmRepository extends JpaRepository<ATM,String> {
 
-    List<ATM> findByOwnerBranch(Branch branch);
+    List<ATM> findAllByOwnerBranch(Branch branch);
 
-    List<ATM> findByCashLinkBranch(Branch branch);
+    List<ATM> findAllByCashLinkBranch(Branch branch);
 
 }

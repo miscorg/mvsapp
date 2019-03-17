@@ -1,5 +1,7 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -24,6 +26,7 @@ public class ATMAuxInfo implements Serializable {
     private Boolean auxField9;
     private Boolean auxField10;
 
+    @JsonIgnore
     @MapsId
     @OneToOne(mappedBy = "atmAuxInfo")
     @JoinColumn(name = "atmId")

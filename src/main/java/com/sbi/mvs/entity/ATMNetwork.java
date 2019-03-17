@@ -1,5 +1,7 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -16,6 +18,7 @@ public class ATMNetwork implements Serializable {
     private String hostAltDNS;
     private String  atmSite;
 
+    @JsonIgnore
     @MapsId
     @OneToOne(mappedBy = "atmNetwork")
     @JoinColumn(name = "atmId")
