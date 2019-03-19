@@ -43,14 +43,17 @@ public class ATM implements Serializable {
     private String state;
     private String popGroup;
     private String landmark;
+    private String os;
+    private String supplier;
 
 //    @JsonIgnore
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private ATMNetwork atmNetwork;
 
 //    @JsonIgnore
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private ATMAuxInfo atmAuxInfo;
 
@@ -283,6 +286,22 @@ public class ATM implements Serializable {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public String getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
     }
 }
 

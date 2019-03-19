@@ -2,7 +2,7 @@ package com.sbi.mvs.service;
 
 import com.sbi.mvs.entity.ATM;
 import com.sbi.mvs.entity.Branch;
-import com.sbi.mvs.entity.Values;
+import com.sbi.mvs.entity.FieldValues;
 import com.sbi.mvs.repository.AtmRepository;
 import com.sbi.mvs.repository.BranchRepository;
 import com.sbi.mvs.repository.ValuesRepository;
@@ -40,18 +40,18 @@ public class AtmServiceImpl implements AtmService{
         fieldMap.put("cashRepType", Arrays.asList("Branch", "CMS", "NCR", "Hitachi"));
         fieldMap.put("phases", Arrays.asList("Phase X", "Phase XI", "Phase XII", "Phase XIII", "Prior to Phase X"));
 
-        List<Values> fieldValueList = valuesRepository.findByKey(field);
-        List<String> values = fieldValueList.stream().map(Values::getValue).collect(Collectors.toList());
+        List<FieldValues> fieldValueList = valuesRepository.findByKey(field);
+        List<String> values = fieldValueList.stream().map(FieldValues::getValue).collect(Collectors.toList());
         return values;
     }
 
     @Override
-    public List<Values> getFieldValueCombination(String field) {
+    public List<FieldValues> getFieldValueCombination(String field) {
         return valuesRepository.findByKey(field);
     }
 
     @Override
-    public List<Values> getFieldValueCombination(String field, Long parent) {
+    public List<FieldValues> getFieldValueCombination(String field, Long parent) {
         return valuesRepository.findByKeyAndParentId(field, parent);
     }
 

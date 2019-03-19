@@ -16,7 +16,8 @@ public class ATMNetwork implements Serializable {
     private String hostDNS;
     private String hostPreDNS;
     private String hostAltDNS;
-    private String  atmSite;
+    private String atmSite;
+    private String port;
 
     @JsonIgnore
     @MapsId
@@ -94,5 +95,13 @@ public class ATMNetwork implements Serializable {
 
     public void setAtm(ATM atm) {
         this.atm = atm;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 }

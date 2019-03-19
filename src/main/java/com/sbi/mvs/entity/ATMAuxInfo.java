@@ -1,5 +1,6 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -12,7 +13,9 @@ public class ATMAuxInfo implements Serializable {
 
     @Id
     private String atmId;
-    private LocalDate targetDate;
+
+    @JsonFormat
+    private String targetDate;
     private Boolean tmkAvailable;
     private String tmkChecksum;
     private Boolean auxField1;
@@ -40,11 +43,11 @@ public class ATMAuxInfo implements Serializable {
         this.atmId = atmId;
     }
 
-    public LocalDate getTargetDate() {
+    public String getTargetDate() {
         return targetDate;
     }
 
-    public void setTargetDate(LocalDate targetDate) {
+    public void setTargetDate(String targetDate) {
         this.targetDate = targetDate;
     }
 
