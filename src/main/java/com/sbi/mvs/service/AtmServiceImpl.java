@@ -56,6 +56,11 @@ public class AtmServiceImpl implements AtmService{
     }
 
     @Override
+    public List<FieldValues> fetchFieldValues() {
+        return valuesRepository.findAll();
+    }
+
+    @Override
     public List<ATM> fetchAtmList(String branchId, String branchType)
     {
         System.out.println(branchId);

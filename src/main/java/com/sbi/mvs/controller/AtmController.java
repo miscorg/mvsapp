@@ -28,6 +28,12 @@ public class AtmController {
         return new ResponseEntity<>(atmService.getFieldValueCombination(fieldName,parent), HttpStatus.OK);
     }
 
+    @GetMapping("/fieldVals")
+    public ResponseEntity<?> getAllAtmFieldValues()
+    {
+        return new ResponseEntity<>(atmService.fetchFieldValues(), HttpStatus.OK);
+    }
+
     @PutMapping("{atmId}")
     private ResponseEntity<?> updateAtmInfo(@PathVariable String atmId, @RequestBody ATM atm){
         return new ResponseEntity<>(atmService.updateAtmById(atmId, atm),HttpStatus.OK);

@@ -14,8 +14,8 @@ public class ATMAuxInfo implements Serializable {
     @Id
     private String atmId;
 
-    @JsonFormat
-    private String targetDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date targetDate;
     private Boolean tmkAvailable;
     private String tmkChecksum;
     private Boolean auxField1;
@@ -43,11 +43,11 @@ public class ATMAuxInfo implements Serializable {
         this.atmId = atmId;
     }
 
-    public String getTargetDate() {
+    public Date getTargetDate() {
         return targetDate;
     }
 
-    public void setTargetDate(String targetDate) {
+    public void setTargetDate(Date targetDate) {
         this.targetDate = targetDate;
     }
 
