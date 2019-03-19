@@ -28,21 +28,29 @@ public class BranchServiceImpl implements BranchService {
     private BranchPeopleRepository branchPeopleRepository;
 
     @Override
-    public Set<Branch> getCashLinkBranch() {
+    public Set<Branch> getCashLinkBranch(String searchKey) {
         List<ATM> atmList = atmRepository.findAll();
-        Set<Branch> cashLinkBranch = atmList.stream().map(ATM::getCashLinkBranch).collect(Collectors.toSet());
+        Set<Branch> cashLinkBranch = atmList.stream().filter(t -> {
+            if(searchKey == null) {
+                return t.getCashLinkBranch() != null;
+            }else {
+                return t.getCashLinkBranch() != null && t.getCashLinkBranch().getBranchId().startsWith(searchKey);
+            }
+        }).map(ATM::getCashLinkBranch).collect(Collectors.toSet());
         return cashLinkBranch;
     }
 
     @Override
-    public Set<Branch> getOwnerBranch() {
+    public Set<Branch> getOwnerBranch(String searchKey) {
         List<ATM> atmList = atmRepository.findAll();
-        Set<Branch> ownerBranch = atmList.stream().map(ATM::getOwnerBranch).map(t -> {
-            t.setBranchType(null);
-//            t.setRegion(null);
-//            t.setBranchPeopleData(null);
-            return t;
-        }).collect(Collectors.toSet());
+        Set<Branch> ownerBranch = atmList.stream()
+                .filter(t -> {
+                    if(searchKey == null) {
+                        return t.getOwnerBranch() != null;
+                    }else {
+                        return t.getOwnerBranch() != null && t.getOwnerBranch().getBranchId().startsWith(searchKey);
+                    }
+                }).map(ATM::getOwnerBranch).collect(Collectors.toSet());
         return ownerBranch;
     }
 

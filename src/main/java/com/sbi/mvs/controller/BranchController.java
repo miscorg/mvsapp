@@ -17,12 +17,22 @@ public class BranchController {
 
     @GetMapping("/owner")
     public ResponseEntity<?> fetchOwnerBranchList(){
-        return new ResponseEntity<>(branchService.getOwnerBranch(), HttpStatus.OK);
+        return new ResponseEntity<>(branchService.getOwnerBranch(null), HttpStatus.OK);
     }
 
     @GetMapping("/cashlink")
     public ResponseEntity<?> fetchCashLinkBranchList(){
-        return new ResponseEntity<>(branchService.getCashLinkBranch(), HttpStatus.OK);
+        return new ResponseEntity<>(branchService.getCashLinkBranch(null), HttpStatus.OK);
+    }
+
+    @GetMapping("/owner/{searchKey}")
+    public ResponseEntity<?> fetchOwnerBranchList(@PathVariable String searchKey){
+        return new ResponseEntity<>(branchService.getOwnerBranch(searchKey), HttpStatus.OK);
+    }
+
+    @GetMapping("/cashlink/{searchKey}")
+    public ResponseEntity<?> fetchCashLinkBranchList(@PathVariable String searchKey){
+        return new ResponseEntity<>(branchService.getCashLinkBranch(searchKey), HttpStatus.OK);
     }
 
     @GetMapping("{branchId}/{role}")
