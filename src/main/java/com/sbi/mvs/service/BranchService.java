@@ -7,8 +7,8 @@ import java.util.Set;
 
 public interface BranchService {
 
-    Set<Branch> getCashLinkBranch();
-    Set<Branch> getOwnerBranch();
+    Set<Branch> getCashLinkBranch(String searchKey);
+    Set<Branch> getOwnerBranch(String searchKey);
     Pfhrms getBankUserDetails(String branchId, String role);
     Branch fetchBranch(String branchId);
 
