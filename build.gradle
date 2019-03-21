@@ -9,7 +9,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 
 group = 'com.sbi'
-version = '0.0.5-SNAPSHOT'
+version = '0.0.7-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {

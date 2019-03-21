@@ -46,6 +46,16 @@ public class ATM implements Serializable {
     private String os;
     private String supplier;
 
+    public String getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
+    }
+
+    private String pincode;
+
 //    @JsonIgnore
 
     @OneToOne(cascade = CascadeType.ALL)
