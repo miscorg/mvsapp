@@ -45,6 +45,7 @@ public class ATM implements Serializable {
     private String landmark;
     private String os;
     private String supplier;
+    private String oldPhase;
 
     public String getPincode() {
         return pincode;
@@ -312,6 +313,14 @@ public class ATM implements Serializable {
 
     public void setSupplier(String supplier) {
         this.supplier = supplier;
+    }
+
+    public String getOldPhase() {
+        return oldPhase;
+    }
+
+    public void setOldPhase(String oldPhase) {
+        this.oldPhase = oldPhase;
     }
 }
 

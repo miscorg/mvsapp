@@ -29,7 +29,7 @@ public class Branch implements Serializable {
     private Region region;
 
 //    @JsonIgnore
-    @OneToOne(mappedBy = "branch", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "branch")
 //    @PrimaryKeyJoinColumn
 //    @MapsId
     private BranchPeopleData branchPeopleData;

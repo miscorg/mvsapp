@@ -4,15 +4,13 @@ import com.sbi.mvs.entity.ATM;
 import com.sbi.mvs.entity.Branch;
 import com.sbi.mvs.entity.FieldValues;
 import com.sbi.mvs.repository.AtmRepository;
+import com.sbi.mvs.repository.BranchPeopleDataRepository;
 import com.sbi.mvs.repository.BranchRepository;
 import com.sbi.mvs.repository.ValuesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +24,9 @@ public class AtmServiceImpl implements AtmService{
 
     @Autowired
     ValuesRepository valuesRepository;
+
+    @Autowired
+    BranchPeopleDataRepository branchPeopleDataRepository;
 
     @Override
     public List<String> getFieldValueByName(String field) {
@@ -85,7 +86,23 @@ public class AtmServiceImpl implements AtmService{
 
     @Override
     public ATM updateAtmById(String atmId, ATM atm) {
+        Optional<ATM> existingAtmOptional = atmRepository.findById(atmId);
+        if(existingAtmOptional.isPresent() && existingAtmOptional.get().getPhase() !=null && atm.getPhase() != null) {
+            if(!existingAtmOptional.get().getPhase().equals(atm.getPhase())){
+                atm.setOldPhase(existingAtmOptional.get().getPhase());
+            }
+        }
         atm.setAtmId(atmId);
+        if (atm.getCashLinkBranch() != null && atm.getCashLinkBranch().getBranchPeopleData() != null) {
+            atm.getCashLinkBranch().getBranchPeopleData().setBranchId(atm.getCashLinkBranch().getBranchId());
+            atm.getCashLinkBranch().getBranchPeopleData().setBranch(atm.getCashLinkBranch());
+            branchPeopleDataRepository.save(atm.getCashLinkBranch().getBranchPeopleData());
+        } else if (atm.getOwnerBranch() != null && atm.getOwnerBranch().getBranchPeopleData() != null) {
+            atm.getOwnerBranch().getBranchPeopleData().setBranchId(atm.getOwnerBranch().getBranchId());
+            atm.getOwnerBranch().getBranchPeopleData().setBranch(atm.getOwnerBranch());
+            branchPeopleDataRepository.save(atm.getOwnerBranch().getBranchPeopleData());
+        }
+        atm.setStatus(true);
         return atmRepository.save(atm);
     }
 }
