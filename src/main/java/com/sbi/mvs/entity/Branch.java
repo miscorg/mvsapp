@@ -26,7 +26,8 @@ public class Branch implements Serializable {
     @JoinColumn(name = "regionId")
     private Region region;
 
-    @OneToOne(mappedBy = "branch", cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn(name = "branchId")
     private BranchPeopleData branchPeopleData;
 
     public String getBranchId() {

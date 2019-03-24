@@ -96,13 +96,13 @@ public class AtmServiceImpl implements AtmService{
         atm.setAtmId(atmId);
         if (atm.getCashLinkBranch() != null && atm.getCashLinkBranch().getBranchPeopleData() != null) {
             //atm.getCashLinkBranch().getBranchPeopleData().setBranchId(atm.getCashLinkBranch().getBranchId());
-            atm.getCashLinkBranch().getBranchPeopleData()
-                    .setBranch(branchRepository.findById(atm.getCashLinkBranch().getBranchId()).get());
+            /*atm.getCashLinkBranch().getBranchPeopleData()
+                    .setBranch(branchRepository.findById(atm.getCashLinkBranch().getBranchId()).get());*/
             branchPeopleDataRepository.save(atm.getCashLinkBranch().getBranchPeopleData());
         } else if (atm.getOwnerBranch() != null && atm.getOwnerBranch().getBranchPeopleData() != null) {
             //atm.getOwnerBranch().getBranchPeopleData().setBranchId(atm.getOwnerBranch().getBranchId());
-            atm.getOwnerBranch().getBranchPeopleData()
-                    .setBranch(branchRepository.findById(atm.getCashLinkBranch().getBranchId()).get());
+            /*atm.getOwnerBranch().getBranchPeopleData()
+                    .setBranch(branchRepository.findById(atm.getCashLinkBranch().getBranchId()).get());*/
             branchPeopleDataRepository.save(atm.getOwnerBranch().getBranchPeopleData());
         }
         atm.setStatus(true);

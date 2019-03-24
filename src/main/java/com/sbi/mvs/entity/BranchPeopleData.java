@@ -19,11 +19,11 @@ public class BranchPeopleData implements Serializable {
     @JoinColumn(name = "atmOfficerId")
     private Pfhrms atmOfficer;
 
-    @MapsId
+    /*@MapsId
     @OneToOne
     @JoinColumn(name = "branchId")
     private Branch branch;
-
+*/
     public String getBranchId() {
         return branchId;
     }
@@ -48,11 +48,11 @@ public class BranchPeopleData implements Serializable {
         this.atmOfficer = atmOfficer;
     }
 
-    public Branch getBranch() {
+    /*public Branch getBranch() {
         return branch;
     }
 
     public void setBranch(Branch branch) {
         this.branch = branch;
-    }
+    }*/
 }
