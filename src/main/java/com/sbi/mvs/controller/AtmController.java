@@ -1,5 +1,6 @@
 package com.sbi.mvs.controller;
 
+import com.sbi.mvs.dto.DashboardDTO;
 import com.sbi.mvs.entity.ATM;
 import com.sbi.mvs.service.AtmService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,5 @@ public class AtmController {
     public ResponseEntity<?> getAtmNetworkInfo(@PathVariable String atmId){
         return new ResponseEntity<>(atmService.getAtmById(atmId).getAtmNetwork(), HttpStatus.OK);
     }
-
-
 
 }

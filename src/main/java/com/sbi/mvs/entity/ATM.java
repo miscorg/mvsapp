@@ -1,13 +1,9 @@
 package com.sbi.mvs.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-//@JsonIgnoreProperties(ignoreUnknown = true)
 public class ATM implements Serializable {
 
     @Id
@@ -22,6 +18,19 @@ public class ATM implements Serializable {
     private String msVendor;
     private String cashRepl;
     private boolean status;
+    private String address1;
+    private String address2;
+    private String address3;
+    private String village;
+    /*private String taluk;
+    private String subDistrict;
+    private String district;
+    private String state;*/
+    private String popGroup;
+    private String landmark;
+    private String os;
+    private String supplier;
+    private String oldPhase;
 
 //    @JsonIgnore
     @ManyToOne
@@ -33,29 +42,18 @@ public class ATM implements Serializable {
     @JoinColumn(name = "cashLinkBranch")
     private Branch cashLinkBranch;
 
-    private String address1;
-    private String address2;
-    private String address3;
-    private String village;
-    private String taluk;
-    private String subDistrict;
-    private String district;
-    private String state;
-    private String popGroup;
-    private String landmark;
-    private String os;
-    private String supplier;
-    private String oldPhase;
+    @ManyToOne
+    @JoinColumn(name = "pincode")
+    private Pincode pincode;
 
-    public String getPincode() {
+    public Pincode getPincode() {
         return pincode;
     }
 
-    public void setPincode(String pincode) {
+    public void setPincode(Pincode pincode) {
         this.pincode = pincode;
     }
 
-    private String pincode;
 
 //    @JsonIgnore
 
@@ -196,38 +194,6 @@ public class ATM implements Serializable {
         this.village = village;
     }
 
-    public String getTaluk() {
-        return taluk;
-    }
-
-    public void setTaluk(String taluk) {
-        this.taluk = taluk;
-    }
-
-    public String getSubDistrict() {
-        return subDistrict;
-    }
-
-    public void setSubDistrict(String subDistrict) {
-        this.subDistrict = subDistrict;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public String getPopGroup() {
         return popGroup;
     }
@@ -279,10 +245,6 @@ public class ATM implements Serializable {
         sb.append(", address2='").append(address2).append('\'');
         sb.append(", address3='").append(address3).append('\'');
         sb.append(", village='").append(village).append('\'');
-        sb.append(", taluk='").append(taluk).append('\'');
-        sb.append(", subDistrict='").append(subDistrict).append('\'');
-        sb.append(", district='").append(district).append('\'');
-        sb.append(", state='").append(state).append('\'');
         sb.append(", popGroup='").append(popGroup).append('\'');
         sb.append(", landmark='").append(landmark).append('\'');
         sb.append(", atmNetwork=").append(atmNetwork);
