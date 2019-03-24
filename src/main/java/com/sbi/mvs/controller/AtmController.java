@@ -65,4 +65,10 @@ public class AtmController {
         return new ResponseEntity<>(atmService.getAtmById(atmId).getAtmNetwork(), HttpStatus.OK);
     }
 
+    @GetMapping("/pincode/{pincode}")
+    public ResponseEntity<?> searchByPincode(@PathVariable String pincode) {
+        return new ResponseEntity<>(atmService.fetchByPincode(pincode), HttpStatus.OK);
+    }
+
+
 }

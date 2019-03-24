@@ -3,10 +3,8 @@ package com.sbi.mvs.service;
 import com.sbi.mvs.entity.ATM;
 import com.sbi.mvs.entity.Branch;
 import com.sbi.mvs.entity.FieldValues;
-import com.sbi.mvs.repository.AtmRepository;
-import com.sbi.mvs.repository.BranchPeopleDataRepository;
-import com.sbi.mvs.repository.BranchRepository;
-import com.sbi.mvs.repository.ValuesRepository;
+import com.sbi.mvs.entity.Pincode;
+import com.sbi.mvs.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +25,9 @@ public class AtmServiceImpl implements AtmService{
 
     @Autowired
     BranchPeopleDataRepository branchPeopleDataRepository;
+
+    @Autowired
+    PincodeRepository pincodeRepository;
 
     @Override
     public List<String> getFieldValueByName(String field) {
@@ -104,5 +105,10 @@ public class AtmServiceImpl implements AtmService{
         }
         atm.setStatus(true);
         return atmRepository.save(atm);
+    }
+
+    @Override
+    public List<Pincode> fetchByPincode(String pincode) {
+        return pincodeRepository.findAllByPincodeStartingWith(pincode);
     }
 }

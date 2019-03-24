@@ -2,6 +2,7 @@ package com.sbi.mvs.service;
 
 import com.sbi.mvs.entity.ATM;
 import com.sbi.mvs.entity.FieldValues;
+import com.sbi.mvs.entity.Pincode;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface AtmService {
     List<ATM> fetchAtmList(String branchId, String branchType);
     ATM getAtmById(String atmId);
     ATM updateAtmById(String atmId, ATM atm);
+    List<Pincode> fetchByPincode(String pincode);
 }
