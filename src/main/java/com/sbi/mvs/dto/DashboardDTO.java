@@ -5,11 +5,21 @@ import java.io.Serializable;
 public class DashboardDTO implements Serializable {
 
     private String lho;
-    private String totalATM;
-    private String verifiedATM;
-    private String endingATM;
+    private Long totalATM;
+    private Long verifiedATM;
+    private Long endingATM;
+
+    public DashboardDTO(String lho, Long totalATM, Long verifiedATM, Long endingATM) {
+        this.lho = lho;
+        this.totalATM = totalATM;
+        this.verifiedATM = verifiedATM;
+        this.endingATM = endingATM;
+    }
+
+    public DashboardDTO(){}
 
     public String getLho() {
+
         return lho;
     }
 
@@ -17,27 +27,27 @@ public class DashboardDTO implements Serializable {
         this.lho = lho;
     }
 
-    public String getTotalATM() {
+    public Long getTotalATM() {
         return totalATM;
     }
 
-    public void setTotalATM(String totalATM) {
+    public void setTotalATM(Long totalATM) {
         this.totalATM = totalATM;
     }
 
-    public String getVerifiedATM() {
+    public Long getVerifiedATM() {
         return verifiedATM;
     }
 
-    public void setVerifiedATM(String verifiedATM) {
+    public void setVerifiedATM(Long verifiedATM) {
         this.verifiedATM = verifiedATM;
     }
 
-    public String getEndingATM() {
+    public Long getEndingATM() {
         return endingATM;
     }
 
-    public void setEndingATM(String endingATM) {
+    public void setEndingATM(Long endingATM) {
         this.endingATM = endingATM;
     }
 }

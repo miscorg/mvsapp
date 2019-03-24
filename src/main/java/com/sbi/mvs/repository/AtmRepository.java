@@ -22,7 +22,7 @@ public interface AtmRepository extends JpaRepository<ATM,String> {
             "LEFT JOIN REGION region ON region.region_id = branch.region_id " +
             "LEFT JOIN MODULE module ON module.module_id = region.module_id " +
             "LEFT JOIN NETWORK network ON network.network_id =  module.network_id " +
-            "LEFT JOIN LHO lho ON lho.lho_id = network.lho_id  GROUP BY lho.lho_id", nativeQuery = true)
-    List findAtmLhoCount();
+            "LEFT JOIN LHO lho ON lho.lho_id = network.lho_id  GROUP BY lho.lho_id, lho.lho_name", nativeQuery = true)
+    List getLhoCount();
 
 }
