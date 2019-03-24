@@ -7,9 +7,11 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class MvsApplication extends SpringBootServletInitializer {
+public class MvsApplication
+//		extends SpringBootServletInitializer
+{
 
-	@Override
+//	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(MvsApplication.class);
 	}
