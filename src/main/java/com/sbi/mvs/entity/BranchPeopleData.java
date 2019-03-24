@@ -19,7 +19,6 @@ public class BranchPeopleData implements Serializable {
     @JoinColumn(name = "atmOfficerId")
     private Pfhrms atmOfficer;
 
-    @JsonIgnore
     @MapsId
     @OneToOne
     @JoinColumn(name = "branchId")

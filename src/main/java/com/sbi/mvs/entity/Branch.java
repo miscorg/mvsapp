@@ -18,20 +18,15 @@ public class Branch implements Serializable {
     private Long stateCode;
     private String branchEmailId;
 
-//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "branchType")
     private BranchType branchType;
 
-//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "regionId")
     private Region region;
 
-//    @JsonIgnore
-    @OneToOne(mappedBy = "branch")
-//    @PrimaryKeyJoinColumn
-//    @MapsId
+    @OneToOne(mappedBy = "branch", cascade = CascadeType.ALL)
     private BranchPeopleData branchPeopleData;
 
     public String getBranchId() {
