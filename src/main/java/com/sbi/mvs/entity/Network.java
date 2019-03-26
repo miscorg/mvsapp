@@ -1,5 +1,8 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -11,15 +14,19 @@ public class Network implements Serializable {
     private String networkId;
     private String networkName;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "lhoId")
+    @Where(clause = "")
     private LHO lho;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "network")
     private Set<Module> modules;
 
+    @JsonIgnore
     @OneToOne
-    @PrimaryKeyJoinColumn
+    @JoinColumn(name = "networkId")
     private LHOPeopleData lhoPeopleData;
 
     public String getNetworkId() {

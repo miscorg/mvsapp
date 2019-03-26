@@ -1,5 +1,7 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -11,15 +13,14 @@ public class Region implements Serializable {
     private String regionId;
     private String regionName;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "moduleId")
     private Module module;
 
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "region")
-//    private Set<Branch> branches;
-
+    @JsonIgnore
     @OneToOne
-    @PrimaryKeyJoinColumn
+    @JoinColumn(name = "regionId")
     private RegionPeopleData regionPeopleData;
 
     public String getRegionId() {
@@ -45,14 +46,6 @@ public class Region implements Serializable {
     public void setModule(Module module) {
         this.module = module;
     }
-
-//    public Set<Branch> getBranches() {
-//        return branches;
-//    }
-//
-//    public void setBranches(Set<Branch> branches) {
-//        this.branches = branches;
-//    }
 
     public RegionPeopleData getRegionPeopleData() {
         return regionPeopleData;

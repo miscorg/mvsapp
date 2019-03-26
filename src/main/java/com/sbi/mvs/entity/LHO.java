@@ -1,5 +1,7 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +16,7 @@ public class LHO implements Serializable {
     private String lhoId;
     private String lhoName;
 
+    @JsonIgnore
     @OneToMany( mappedBy = "lho")
     private Set<Network> networks;
 

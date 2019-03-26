@@ -17,11 +17,6 @@ public class RegionPeopleData implements Serializable {
     @JoinColumn(name = "cmcsrrboPFId")
     private Pfhrms cmcsrrbo;
 
-    @MapsId
-    @OneToOne(mappedBy = "regionPeopleData")
-//    @JoinColumn(name = "regionId")
-    private Region region;
-
     public String getRegionId() {
         return regionId;
     }
@@ -46,11 +41,4 @@ public class RegionPeopleData implements Serializable {
         this.cmcsrrbo = cmcsrrbo;
     }
 
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
 }

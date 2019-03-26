@@ -1,5 +1,7 @@
 package com.sbi.mvs.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -11,10 +13,12 @@ public class Module implements Serializable {
     private String moduleId;
     private String moduleName;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "networkId")
     private Network network;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "module")
     private Set<Region> regions;
 

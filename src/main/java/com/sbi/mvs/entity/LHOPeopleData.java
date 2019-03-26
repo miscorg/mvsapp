@@ -13,10 +13,6 @@ public class LHOPeopleData implements Serializable {
     @JoinColumn(name = "agmatmPFId")
     private Pfhrms agmatmPF;
 
-    @MapsId
-    @OneToOne(mappedBy = "lhoPeopleData")
-    @JoinColumn(name = "networkId")
-    private Network network;
 
     public String getNetworkId() {
         return networkId;
@@ -34,11 +30,4 @@ public class LHOPeopleData implements Serializable {
         this.agmatmPF = agmatmPF;
     }
 
-    public Network getNetwork() {
-        return network;
-    }
-
-    public void setNetwork(Network network) {
-        this.network = network;
-    }
 }
