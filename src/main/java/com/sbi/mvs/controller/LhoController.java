@@ -34,6 +34,11 @@ public class LhoController {
         return new ResponseEntity<>(lhoService.getRegionByModule(moduleId), HttpStatus.OK);
     }
 
+    @GetMapping("lho/{type}/{id}")
+    public ResponseEntity<?> getUserDetailsByType(@PathVariable String type, @PathVariable String id){
+        return new ResponseEntity<>(lhoService.getPhrmsByType(type,id), HttpStatus.OK);
+    }
+
     /*@PostMapping("lho/people")
     public ResponseEntity<?> saveLhoPeopleData(@RequestBody LHOPeopleData lhoPeopleData){
         return new ResponseEntity<>()

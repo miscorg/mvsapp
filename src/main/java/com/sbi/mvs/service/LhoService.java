@@ -1,9 +1,6 @@
 package com.sbi.mvs.service;
 
-import com.sbi.mvs.entity.LHO;
-import com.sbi.mvs.entity.Module;
-import com.sbi.mvs.entity.Network;
-import com.sbi.mvs.entity.Region;
+import com.sbi.mvs.entity.*;
 
 import java.util.List;
 import java.util.Set;
@@ -17,4 +14,6 @@ public interface LhoService {
     Set<Module> getModuleByNetwork(String networkId);
 
     Set<Region> getRegionByModule(String moduleId);
+
+    Pfhrms getPhrmsByType(String type, String id);
 }

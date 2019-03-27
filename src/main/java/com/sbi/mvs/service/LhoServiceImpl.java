@@ -1,16 +1,15 @@
 package com.sbi.mvs.service;
 
-import com.sbi.mvs.entity.LHO;
-import com.sbi.mvs.entity.Module;
-import com.sbi.mvs.entity.Network;
-import com.sbi.mvs.entity.Region;
+import com.sbi.mvs.entity.*;
 import com.sbi.mvs.repository.LhoRepository;
 import com.sbi.mvs.repository.ModuleRepository;
 import com.sbi.mvs.repository.NetworkRepository;
+import com.sbi.mvs.repository.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -24,6 +23,9 @@ public class LhoServiceImpl implements LhoService {
 
     @Autowired
     ModuleRepository moduleRepository;
+
+    @Autowired
+    RegionRepository regionRepository;
 
     @Override
     public List<LHO> getAllLho() {
@@ -44,5 +46,23 @@ public class LhoServiceImpl implements LhoService {
     public Set<Region> getRegionByModule(String moduleId) {
         Set<Region> regions = moduleRepository.findById(moduleId).get().getRegions();
         return regions;
+    }
+
+    @Override
+    public Pfhrms getPhrmsByType(String type, String id) {
+        if("afgm".equals(type)){
+            Optional<Network> networkDetails = networkRepository.findById(id);
+            if(networkDetails.isPresent()){
+                return networkDetails.get().getLhoPeopleData().getAgmatmPF();
+            }
+        } else {
+            Optional<Region> regionDetails = regionRepository.findById(id);
+            if ("chMgr".equals(type)) {
+                return regionDetails.get().getRegionPeopleData().getChanelManager();
+            } else if ("cmcsRbo".equals(type)) {
+                return regionDetails.get().getRegionPeopleData().getCmcsrrbo();
+            }
+        }
+        return null;
     }
 }
