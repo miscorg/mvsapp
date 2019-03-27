@@ -1,5 +1,6 @@
 package com.sbi.mvs.controller;
 
+import com.sbi.mvs.dto.LhoUserDto;
 import com.sbi.mvs.entity.LHOPeopleData;
 import com.sbi.mvs.service.LhoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,9 @@ public class LhoController {
         return new ResponseEntity<>(lhoService.getPhrmsByType(type,id), HttpStatus.OK);
     }
 
-    /*@PostMapping("lho/people")
-    public ResponseEntity<?> saveLhoPeopleData(@RequestBody LHOPeopleData lhoPeopleData){
-        return new ResponseEntity<>()
-    }*/
+    @PostMapping("lho/user")
+    public ResponseEntity<?> saveLhoPeopleData(@RequestBody LhoUserDto lhoUser){
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }

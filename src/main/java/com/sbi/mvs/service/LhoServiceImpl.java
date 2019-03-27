@@ -1,13 +1,12 @@
 package com.sbi.mvs.service;
 
+import com.sbi.mvs.dto.LhoUserDto;
 import com.sbi.mvs.entity.*;
-import com.sbi.mvs.repository.LhoRepository;
-import com.sbi.mvs.repository.ModuleRepository;
-import com.sbi.mvs.repository.NetworkRepository;
-import com.sbi.mvs.repository.RegionRepository;
+import com.sbi.mvs.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -26,6 +25,15 @@ public class LhoServiceImpl implements LhoService {
 
     @Autowired
     RegionRepository regionRepository;
+
+    @Autowired
+    PfhrmsRepository pfhrmsRepository;
+
+    @Autowired
+    LhoPeopleDataRepository lhoPeopleDataRepository;
+
+    @Autowired
+    RegionPeopleDataRepository regionPeopleDataRepository;
 
     @Override
     public List<LHO> getAllLho() {
@@ -66,5 +74,21 @@ public class LhoServiceImpl implements LhoService {
             }
         }
         return null;
+    }
+
+    @Override
+    public void saveLhoUser(LhoUserDto lhoUser) {
+        if(lhoUser.getNetworkId() != null){
+            LHOPeopleData lhoPeopleData = new LHOPeopleData();
+            lhoPeopleData.setNetworkId(lhoUser.getNetworkId());
+            lhoPeopleData.setAgmatmPF(pfhrmsRepository.findById(lhoUser.getAgmatmPF()).get());
+            lhoPeopleDataRepository.save(lhoPeopleData);
+        }else if(lhoUser.getRegionId() != null){
+            RegionPeopleData regionPeopleData = new RegionPeopleData();
+            regionPeopleData.setRegionId(lhoUser.getRegionId());
+            regionPeopleData.setChanelManager(pfhrmsRepository.findById(lhoUser.getChanelManager()).get());
+            regionPeopleData.setCmcsrrbo(pfhrmsRepository.findById(lhoUser.getCmcsrrbo()).get());
+            regionPeopleDataRepository.save(regionPeopleData);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.sbi.mvs.service;
 
+import com.sbi.mvs.dto.LhoUserDto;
 import com.sbi.mvs.entity.*;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface LhoService {
     Set<Region> getRegionByModule(String moduleId);
 
     Pfhrms getPhrmsByType(String type, String id);
+
+    void saveLhoUser(LhoUserDto lhoUser);
 }
