@@ -42,6 +42,7 @@ public class LhoController {
 
     @PostMapping("lho/user")
     public ResponseEntity<?> saveLhoPeopleData(@RequestBody LhoUserDto lhoUser){
+        lhoService.saveLhoUser(lhoUser);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

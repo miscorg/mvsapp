@@ -65,7 +65,7 @@ public class LhoServiceImpl implements LhoService {
             }
         } else {
             Optional<Region> regionDetails = regionRepository.findById(id);
-            if(regionDetails.isPresent()) {
+            if(regionDetails.isPresent() && regionDetails.get().getRegionPeopleData() != null) {
                 if ("chMgr".equals(type)) {
                     return regionDetails.get().getRegionPeopleData().getChanelManager();
                 } else if ("cmcsRbo".equals(type)) {
@@ -83,7 +83,8 @@ public class LhoServiceImpl implements LhoService {
             lhoPeopleData.setNetworkId(lhoUser.getNetworkId());
             lhoPeopleData.setAgmatmPF(pfhrmsRepository.findById(lhoUser.getAgmatmPF()).get());
             lhoPeopleDataRepository.save(lhoPeopleData);
-        }else if(lhoUser.getRegionId() != null){
+        }
+        if(lhoUser.getRegionId() != null){
             RegionPeopleData regionPeopleData = new RegionPeopleData();
             regionPeopleData.setRegionId(lhoUser.getRegionId());
             regionPeopleData.setChanelManager(pfhrmsRepository.findById(lhoUser.getChanelManager()).get());
