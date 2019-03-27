@@ -57,10 +57,12 @@ public class LhoServiceImpl implements LhoService {
             }
         } else {
             Optional<Region> regionDetails = regionRepository.findById(id);
-            if ("chMgr".equals(type)) {
-                return regionDetails.get().getRegionPeopleData().getChanelManager();
-            } else if ("cmcsRbo".equals(type)) {
-                return regionDetails.get().getRegionPeopleData().getCmcsrrbo();
+            if(regionDetails.isPresent()) {
+                if ("chMgr".equals(type)) {
+                    return regionDetails.get().getRegionPeopleData().getChanelManager();
+                } else if ("cmcsRbo".equals(type)) {
+                    return regionDetails.get().getRegionPeopleData().getCmcsrrbo();
+                }
             }
         }
         return null;
